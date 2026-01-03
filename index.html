@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weighted Average of Points on a Line</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Weighted Average of Points on a Line</h1>
+            <p class="subtitle">Standard: MA.912.GR.3.1</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0%</span>
+        </div>
+
+        <!-- Phase Navigation -->
+        <div class="phase-nav">
+            <div class="phase-dot active" data-phase="1">1</div>
+            <div class="phase-dot" data-phase="2">2</div>
+            <div class="phase-dot" data-phase="3">3</div>
+            <div class="phase-dot" data-phase="4">4</div>
+            <div class="phase-dot" data-phase="5">5</div>
+        </div>
+
+        <!-- Phase 1: Introduction -->
+        <div class="content-card active" id="phase1">
+            <div class="phase-header">
+                <span class="phase-number">Phase 1</span>
+                <h2>Introduction</h2>
+            </div>
+
+            <div class="objectives-box">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    <li>Calculate weighted averages of two points on a number line</li>
+                    <li>Determine weighted averages of multiple points</li>
+                    <li>Understand how changing weights affects the weighted average</li>
+                    <li>Apply weighted averages to partition line segments</li>
+                </ul>
+            </div>
+
+            <div class="intro-content">
+                <h3>What is a Weighted Average?</h3>
+                <p>A <strong>weighted average</strong> gives different importance (weight) to different values. Unlike a regular average where all values count equally, a weighted average lets some values "pull" the result more than others.</p>
+
+                <div class="example-box">
+                    <h4>Real-World Example</h4>
+                    <p>If your grades are: Homework (20%), Quizzes (30%), Tests (50%)</p>
+                    <p>Your weighted average = 0.20(HW) + 0.30(Quiz) + 0.50(Test)</p>
+                    <p>The test "weighs" more than homework!</p>
+                </div>
+
+                <div class="key-concepts">
+                    <h3>Key Formulas</h3>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>Midpoint (Equal Weights)</h4>
+                            <p>M = (A + B) / 2</p>
+                            <small>Same as 0.5A + 0.5B</small>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Weighted Average</h4>
+                            <p>P = wA + (1-w)B</p>
+                            <small>w is weight for point A</small>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Partition Ratio m:n</h4>
+                            <p>P = (nA + mB)/(m+n)</p>
+                            <small>Point P divides AB in ratio m:n</small>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Section Formula</h4>
+                            <p>x = (mx₂ + nx₁)/(m+n)</p>
+                            <small>For coordinates on a line</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual-example">
+                    <h3>Visualizing Weighted Averages on a Number Line</h3>
+                    <div class="number-line-container">
+                        <div class="number-line">
+                            <span class="point-label" style="left: 10%;">A=2</span>
+                            <span class="point-label" style="left: 50%;">Mid=5</span>
+                            <span class="point-label" style="left: 70%;">P</span>
+                            <span class="point-label" style="left: 90%;">B=8</span>
+                        </div>
+                        <p class="visual-caption">If ratio is 2:1, point P is 2/3 of the way from A to B</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="printWorksheet()">Print Worksheet</button>
+                <button class="btn btn-primary" onclick="nextPhase()">Continue to Videos</button>
+            </div>
+        </div>
+
+        <!-- Phase 2: Video -->
+        <div class="content-card" id="phase2">
+            <div class="phase-header">
+                <span class="phase-number">Phase 2</span>
+                <h2>Video Lessons</h2>
+            </div>
+
+            <h3 class="video-title">Video 1: Coordinate Geometry Basics</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/PXnAKcBipKM"
+                    title="Coordinate Geometry Introduction"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="video-notes">
+                <h3>Key Points - Coordinate Geometry</h3>
+                <ul>
+                    <li>The midpoint formula: M = ((x₁+x₂)/2, (y₁+y₂)/2)</li>
+                    <li>Midpoint is a special case where both points have equal weight</li>
+                    <li>Distance formula helps verify segment lengths</li>
+                </ul>
+            </div>
+
+            <h3 class="video-title">Video 2: Dividing Line Segments</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/ys3GmogOG2A"
+                    title="Dividing Line Segments in Ratio"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="video-notes">
+                <h3>Key Points - Partitioning Segments</h3>
+                <ul>
+                    <li>Partition point P divides segment AB in ratio m:n</li>
+                    <li>Use section formula: P = (mx₂ + nx₁)/(m+n)</li>
+                    <li>The ratio tells you how far along the segment to go</li>
+                    <li>Ratio 1:1 gives the midpoint</li>
+                </ul>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevPhase()">Back</button>
+                <button class="btn btn-primary" onclick="nextPhase()">Continue to Practice</button>
+            </div>
+        </div>
+
+        <!-- Phase 3: Guided Practice -->
+        <div class="content-card" id="phase3">
+            <div class="phase-header">
+                <span class="phase-number">Phase 3</span>
+                <h2>Guided Practice</h2>
+            </div>
+
+            <!-- Exercise 1 -->
+            <div class="exercise-container" id="exercise1">
+                <h3>Exercise 1: Simple Weighted Average</h3>
+                <div class="problem-statement">
+                    <p>Points A and B are at positions 2 and 10 on a number line.</p>
+                    <p>Find the weighted average with weight 0.25 for A and 0.75 for B.</p>
+                </div>
+
+                <div class="step-container visible active" id="ex1-step1">
+                    <p class="step-question"><strong>Step 1:</strong> Using the formula P = wA + (1-w)B with w = 0.25, what is 0.25 × 2?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep1Ex1('correct')">0.5</button>
+                        <button class="choice-btn" onclick="checkStep1Ex1('wrong1')">2.5</button>
+                        <button class="choice-btn" onclick="checkStep1Ex1('wrong2')">0.25</button>
+                    </div>
+                    <div class="result-badge" id="ex1-result1"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex1-step2">
+                    <p class="step-question"><strong>Step 2:</strong> Now calculate 0.75 × 10, then add to get the weighted average.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep2Ex1('wrong1')">7.0</button>
+                        <button class="choice-btn" onclick="checkStep2Ex1('correct')">8.0</button>
+                        <button class="choice-btn" onclick="checkStep2Ex1('wrong2')">6.0</button>
+                    </div>
+                    <div class="result-badge" id="ex1-result2"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex1-step3">
+                    <div class="success-message">
+                        <p><strong>Excellent!</strong> P = 0.25(2) + 0.75(10) = 0.5 + 7.5 = 8</p>
+                        <p>The point is closer to B because B has more weight (0.75 > 0.25)!</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="completeExercise(1)">Next Exercise</button>
+                </div>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="exercise-container" id="exercise2" style="display: none;">
+                <h3>Exercise 2: Partition Ratio</h3>
+                <div class="problem-statement">
+                    <p>Point P partitions segment AB in the ratio 1:3, where A = 4 and B = 12.</p>
+                    <p>Find the position of P using: P = (nA + mB)/(m+n)</p>
+                </div>
+
+                <div class="step-container visible active" id="ex2-step1">
+                    <p class="step-question"><strong>Step 1:</strong> With ratio 1:3 (m=1, n=3), what is m + n?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep1Ex2('wrong1')">3</button>
+                        <button class="choice-btn" onclick="checkStep1Ex2('correct')">4</button>
+                        <button class="choice-btn" onclick="checkStep1Ex2('wrong2')">2</button>
+                    </div>
+                    <div class="result-badge" id="ex2-result1"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex2-step2">
+                    <p class="step-question"><strong>Step 2:</strong> Calculate P = (3×4 + 1×12)/4 = ?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep2Ex2('correct')">6</button>
+                        <button class="choice-btn" onclick="checkStep2Ex2('wrong1')">8</button>
+                        <button class="choice-btn" onclick="checkStep2Ex2('wrong2')">10</button>
+                    </div>
+                    <div class="result-badge" id="ex2-result2"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex2-step3">
+                    <div class="success-message">
+                        <p><strong>Great work!</strong> P = (12 + 12)/4 = 24/4 = 6</p>
+                        <p>P is 1/4 of the way from A to B (ratio 1:3 means 1 part from A, 3 parts to B)</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="completeExercise(2)">Next Exercise</button>
+                </div>
+            </div>
+
+            <!-- Exercise 3 -->
+            <div class="exercise-container" id="exercise3" style="display: none;">
+                <h3>Exercise 3: Finding the Ratio</h3>
+                <div class="problem-statement">
+                    <p>A = 0, B = 20, and P = 15.</p>
+                    <p>What ratio does P divide segment AB?</p>
+                </div>
+
+                <div class="step-container visible active" id="ex3-step1">
+                    <p class="step-question"><strong>Step 1:</strong> What is the distance from A to P?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep1Ex3('correct')">15</button>
+                        <button class="choice-btn" onclick="checkStep1Ex3('wrong1')">5</button>
+                        <button class="choice-btn" onclick="checkStep1Ex3('wrong2')">20</button>
+                    </div>
+                    <div class="result-badge" id="ex3-result1"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex3-step2">
+                    <p class="step-question"><strong>Step 2:</strong> Distance from P to B is 5. The ratio AP:PB is 15:5, which simplifies to?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep2Ex3('correct')">3:1</button>
+                        <button class="choice-btn" onclick="checkStep2Ex3('wrong1')">1:3</button>
+                        <button class="choice-btn" onclick="checkStep2Ex3('wrong2')">4:1</button>
+                    </div>
+                    <div class="result-badge" id="ex3-result2"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex3-step3">
+                    <div class="success-message">
+                        <p><strong>Perfect!</strong> AP = 15, PB = 5, so ratio = 15:5 = 3:1</p>
+                        <p>P is 3/4 of the way from A to B.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="completeExercise(3)">Next Exercise</button>
+                </div>
+            </div>
+
+            <!-- Exercise 4 -->
+            <div class="exercise-container" id="exercise4" style="display: none;">
+                <h3>Exercise 4: Changing Weights</h3>
+                <div class="problem-statement">
+                    <p>A = 0 and B = 100. Compare weighted averages when:</p>
+                    <p>Case 1: Weight for A is 0.8, weight for B is 0.2</p>
+                    <p>Case 2: Weight for A is 0.2, weight for B is 0.8</p>
+                </div>
+
+                <div class="step-container visible active" id="ex4-step1">
+                    <p class="step-question"><strong>Step 1:</strong> For Case 1 (w=0.8 for A), the weighted average is closest to which point?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep1Ex4('correct')">Closer to A</button>
+                        <button class="choice-btn" onclick="checkStep1Ex4('wrong1')">Closer to B</button>
+                        <button class="choice-btn" onclick="checkStep1Ex4('wrong2')">Exactly in the middle</button>
+                    </div>
+                    <div class="result-badge" id="ex4-result1"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex4-step2">
+                    <p class="step-question"><strong>Step 2:</strong> Case 1: 0.8(0) + 0.2(100) = 20. Case 2: 0.2(0) + 0.8(100) = 80. What's the difference?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkStep2Ex4('correct')">60</button>
+                        <button class="choice-btn" onclick="checkStep2Ex4('wrong1')">40</button>
+                        <button class="choice-btn" onclick="checkStep2Ex4('wrong2')">100</button>
+                    </div>
+                    <div class="result-badge" id="ex4-result2"></div>
+                </div>
+
+                <div class="step-container hidden" id="ex4-step3">
+                    <div class="success-message">
+                        <p><strong>Excellent!</strong></p>
+                        <p>Case 1: 0.8(0) + 0.2(100) = 20 (closer to A)</p>
+                        <p>Case 2: 0.2(0) + 0.8(100) = 80 (closer to B)</p>
+                        <p>Difference = 80 - 20 = 60. Higher weight pulls the average toward that point!</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="completeExercise(4)">Complete Guided Practice</button>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevPhase()">Back</button>
+                <button class="btn btn-primary" onclick="nextPhase()" id="phase3Next" disabled>Continue to Independent Practice</button>
+            </div>
+        </div>
+
+        <!-- Phase 4: Independent Practice -->
+        <div class="content-card" id="phase4">
+            <div class="phase-header">
+                <span class="phase-number">Phase 4</span>
+                <h2>Independent Practice</h2>
+            </div>
+
+            <div class="score-display">
+                Score: <span id="independentScore">0</span>/<span id="totalQuestions">10</span>
+            </div>
+
+            <div class="independent-problems">
+                <!-- Problem 1 -->
+                <div class="independent-problem">
+                    <p><strong>1.</strong> A = 4, B = 16. Find the midpoint (weight 0.5 each).</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(1, 'correct')">10</button>
+                        <button class="choice-btn" onclick="checkIndependent(1, 'wrong1')">8</button>
+                        <button class="choice-btn" onclick="checkIndependent(1, 'wrong2')">12</button>
+                    </div>
+                    <span class="result-inline" id="ind1-result"></span>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="independent-problem">
+                    <p><strong>2.</strong> A = 0, B = 20. Weighted average with w = 0.3 for A, w = 0.7 for B is:</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(2, 'wrong1')">6</button>
+                        <button class="choice-btn" onclick="checkIndependent(2, 'correct')">14</button>
+                        <button class="choice-btn" onclick="checkIndependent(2, 'wrong2')">10</button>
+                    </div>
+                    <span class="result-inline" id="ind2-result"></span>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="independent-problem">
+                    <p><strong>3.</strong> Point P partitions AB in ratio 2:3. A = 5, B = 15. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(3, 'correct')">9</button>
+                        <button class="choice-btn" onclick="checkIndependent(3, 'wrong1')">11</button>
+                        <button class="choice-btn" onclick="checkIndependent(3, 'wrong2')">7</button>
+                    </div>
+                    <span class="result-inline" id="ind3-result"></span>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="independent-problem">
+                    <p><strong>4.</strong> A = 2, B = 10, P = 6. What is the ratio AP:PB?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(4, 'correct')">1:1</button>
+                        <button class="choice-btn" onclick="checkIndependent(4, 'wrong1')">1:2</button>
+                        <button class="choice-btn" onclick="checkIndependent(4, 'wrong2')">2:1</button>
+                    </div>
+                    <span class="result-inline" id="ind4-result"></span>
+                </div>
+
+                <!-- Problem 5 -->
+                <div class="independent-problem">
+                    <p><strong>5.</strong> If weight for A increases from 0.4 to 0.6, the weighted average moves:</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(5, 'correct')">Closer to A</button>
+                        <button class="choice-btn" onclick="checkIndependent(5, 'wrong1')">Closer to B</button>
+                        <button class="choice-btn" onclick="checkIndependent(5, 'wrong2')">Stays the same</button>
+                    </div>
+                    <span class="result-inline" id="ind5-result"></span>
+                </div>
+
+                <!-- Problem 6 -->
+                <div class="independent-problem">
+                    <p><strong>6.</strong> A = -6, B = 6. What is the weighted average with equal weights (0.5 each)?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(6, 'correct')">0</button>
+                        <button class="choice-btn" onclick="checkIndependent(6, 'wrong1')">3</button>
+                        <button class="choice-btn" onclick="checkIndependent(6, 'wrong2')">-3</button>
+                    </div>
+                    <span class="result-inline" id="ind6-result"></span>
+                </div>
+
+                <!-- Problem 7 -->
+                <div class="independent-problem">
+                    <p><strong>7.</strong> Point P divides AB in ratio 3:1. A = 0, B = 16. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(7, 'wrong1')">4</button>
+                        <button class="choice-btn" onclick="checkIndependent(7, 'correct')">12</button>
+                        <button class="choice-btn" onclick="checkIndependent(7, 'wrong2')">8</button>
+                    </div>
+                    <span class="result-inline" id="ind7-result"></span>
+                </div>
+
+                <!-- Problem 8 -->
+                <div class="independent-problem">
+                    <p><strong>8.</strong> A = 1, B = 9. Find P such that P is 1/4 of the way from A to B.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(8, 'correct')">3</button>
+                        <button class="choice-btn" onclick="checkIndependent(8, 'wrong1')">2</button>
+                        <button class="choice-btn" onclick="checkIndependent(8, 'wrong2')">4</button>
+                    </div>
+                    <span class="result-inline" id="ind8-result"></span>
+                </div>
+
+                <!-- Problem 9 -->
+                <div class="independent-problem">
+                    <p><strong>9.</strong> A = 10, B = 30, P = 25. The ratio AP:PB is:</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(9, 'wrong1')">1:3</button>
+                        <button class="choice-btn" onclick="checkIndependent(9, 'correct')">3:1</button>
+                        <button class="choice-btn" onclick="checkIndependent(9, 'wrong2')">1:2</button>
+                    </div>
+                    <span class="result-inline" id="ind9-result"></span>
+                </div>
+
+                <!-- Problem 10 -->
+                <div class="independent-problem">
+                    <p><strong>10.</strong> Three weights: w₁=0.2, w₂=0.5, w₃=0.3 for points 10, 20, 30. Weighted average is:</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(10, 'wrong1')">20</button>
+                        <button class="choice-btn" onclick="checkIndependent(10, 'correct')">21</button>
+                        <button class="choice-btn" onclick="checkIndependent(10, 'wrong2')">22</button>
+                    </div>
+                    <span class="result-inline" id="ind10-result"></span>
+                </div>
+            </div>
+
+            <div class="final-score" id="finalScore" style="display: none;">
+                <h3>Practice Complete!</h3>
+                <p>Your Score: <span id="finalScoreNumber"></span></p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevPhase()">Back</button>
+                <button class="btn btn-primary" onclick="nextPhase()" id="phase4Next" disabled>View Results</button>
+            </div>
+        </div>
+
+        <!-- Phase 5: Completion -->
+        <div class="content-card" id="phase5">
+            <div class="phase-header">
+                <span class="phase-number">Phase 5</span>
+                <h2>Lesson Complete!</h2>
+            </div>
+
+            <div class="completion-content">
+                <div class="trophy-icon">⚖️</div>
+                <h3>Congratulations!</h3>
+                <p>You've completed the Weighted Average of Points on a Line lesson.</p>
+
+                <div class="final-results">
+                    <div class="result-item">
+                        <span>Guided Practice:</span>
+                        <span>4/4 Exercises</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Independent Practice:</span>
+                        <span id="finalIndScore">0/10</span>
+                    </div>
+                    <div class="result-item total">
+                        <span>Overall Score:</span>
+                        <span id="overallScore">0/14</span>
+                    </div>
+                </div>
+
+                <div class="key-takeaways">
+                    <h4>Key Takeaways</h4>
+                    <ul>
+                        <li>Weighted average: P = w₁A + w₂B (where w₁ + w₂ = 1)</li>
+                        <li>Midpoint is a special case with equal weights (0.5, 0.5)</li>
+                        <li>Partition formula: P = (nA + mB)/(m+n) for ratio m:n</li>
+                        <li>Higher weight pulls the average toward that point</li>
+                        <li>Ratio m:n means P is m/(m+n) of the way from A to B</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevPhase()">Back</button>
+                <button class="btn btn-secondary" onclick="printResults()">Print Results</button>
+                <button class="btn btn-primary" onclick="restartLesson()">Restart Lesson</button>
+            </div>
+        </div>
+
+        <!-- Print Results Section (Hidden) -->
+        <div class="print-only" id="printResults">
+            <h1>Weighted Average of Points on a Line - Results</h1>
+            <p><strong>Standard:</strong> MA.912.GR.3.1</p>
+            <h2>Independent Practice Results</h2>
+            <div id="printIndependentResults"></div>
+            <div class="print-summary">
+                <p><strong>Final Score:</strong> <span id="printFinalScore"></span></p>
+                <p><strong>Percentage:</strong> <span id="printPercentage"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
