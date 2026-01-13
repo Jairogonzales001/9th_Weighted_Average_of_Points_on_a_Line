@@ -329,12 +329,12 @@
             </div>
 
             <div class="score-display">
-                Score: <span id="independentScore">0</span>/<span id="totalQuestions">10</span>
+                Score: <span id="independentScore">0</span>/<span id="totalQuestions">20</span>
             </div>
 
             <div class="independent-problems">
                 <!-- Problem 1 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="10">
                     <p><strong>1.</strong> A = 4, B = 16. Find the midpoint (weight 0.5 each).</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(1, 'correct')">10</button>
@@ -345,7 +345,7 @@
                 </div>
 
                 <!-- Problem 2 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="14">
                     <p><strong>2.</strong> A = 0, B = 20. Weighted average with w = 0.3 for A, w = 0.7 for B is:</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(2, 'wrong1')">6</button>
@@ -356,7 +356,7 @@
                 </div>
 
                 <!-- Problem 3 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="9">
                     <p><strong>3.</strong> Point P partitions AB in ratio 2:3. A = 5, B = 15. Find P.</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(3, 'correct')">9</button>
@@ -367,7 +367,7 @@
                 </div>
 
                 <!-- Problem 4 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="1:1">
                     <p><strong>4.</strong> A = 2, B = 10, P = 6. What is the ratio AP:PB?</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(4, 'correct')">1:1</button>
@@ -378,7 +378,7 @@
                 </div>
 
                 <!-- Problem 5 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="Closer to A">
                     <p><strong>5.</strong> If weight for A increases from 0.4 to 0.6, the weighted average moves:</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(5, 'correct')">Closer to A</button>
@@ -389,7 +389,7 @@
                 </div>
 
                 <!-- Problem 6 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="0">
                     <p><strong>6.</strong> A = -6, B = 6. What is the weighted average with equal weights (0.5 each)?</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(6, 'correct')">0</button>
@@ -400,7 +400,7 @@
                 </div>
 
                 <!-- Problem 7 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="12">
                     <p><strong>7.</strong> Point P divides AB in ratio 3:1. A = 0, B = 16. Find P.</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(7, 'wrong1')">4</button>
@@ -411,7 +411,7 @@
                 </div>
 
                 <!-- Problem 8 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="3">
                     <p><strong>8.</strong> A = 1, B = 9. Find P such that P is 1/4 of the way from A to B.</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(8, 'correct')">3</button>
@@ -422,7 +422,7 @@
                 </div>
 
                 <!-- Problem 9 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="3:1">
                     <p><strong>9.</strong> A = 10, B = 30, P = 25. The ratio AP:PB is:</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(9, 'wrong1')">1:3</button>
@@ -433,7 +433,7 @@
                 </div>
 
                 <!-- Problem 10 -->
-                <div class="independent-problem">
+                <div class="independent-problem" data-answer="21">
                     <p><strong>10.</strong> Three weights: w₁=0.2, w₂=0.5, w₃=0.3 for points 10, 20, 30. Weighted average is:</p>
                     <div class="choices">
                         <button class="choice-btn" onclick="checkIndependent(10, 'wrong1')">20</button>
@@ -441,6 +441,116 @@
                         <button class="choice-btn" onclick="checkIndependent(10, 'wrong2')">22</button>
                     </div>
                     <span class="result-inline" id="ind10-result"></span>
+                </div>
+
+                <!-- Problem 11 -->
+                <div class="independent-problem" data-answer="7">
+                    <p><strong>11.</strong> A = -5, B = 15. Find the weighted average with w = 0.4 for A and w = 0.6 for B.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(11, 'correct')">7</button>
+                        <button class="choice-btn" onclick="checkIndependent(11, 'wrong1')">5</button>
+                        <button class="choice-btn" onclick="checkIndependent(11, 'wrong2')">3</button>
+                    </div>
+                    <span class="result-inline" id="ind11-result"></span>
+                </div>
+
+                <!-- Problem 12 -->
+                <div class="independent-problem" data-answer="8">
+                    <p><strong>12.</strong> Point P partitions AB in ratio 1:4. A = 0, B = 40. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(12, 'wrong1')">10</button>
+                        <button class="choice-btn" onclick="checkIndependent(12, 'correct')">8</button>
+                        <button class="choice-btn" onclick="checkIndependent(12, 'wrong2')">32</button>
+                    </div>
+                    <span class="result-inline" id="ind12-result"></span>
+                </div>
+
+                <!-- Problem 13 -->
+                <div class="independent-problem" data-answer="2:3">
+                    <p><strong>13.</strong> A = 0, B = 25, P = 10. What is the ratio AP:PB?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(13, 'wrong1')">3:2</button>
+                        <button class="choice-btn" onclick="checkIndependent(13, 'correct')">2:3</button>
+                        <button class="choice-btn" onclick="checkIndependent(13, 'wrong2')">1:2</button>
+                    </div>
+                    <span class="result-inline" id="ind13-result"></span>
+                </div>
+
+                <!-- Problem 14 -->
+                <div class="independent-problem" data-answer="Closer to B">
+                    <p><strong>14.</strong> If A = 0, B = 100, and weight for B is 0.9, the weighted average is:</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(14, 'wrong1')">Closer to A</button>
+                        <button class="choice-btn" onclick="checkIndependent(14, 'correct')">Closer to B</button>
+                        <button class="choice-btn" onclick="checkIndependent(14, 'wrong2')">At the midpoint</button>
+                    </div>
+                    <span class="result-inline" id="ind14-result"></span>
+                </div>
+
+                <!-- Problem 15 -->
+                <div class="independent-problem" data-answer="-2">
+                    <p><strong>15.</strong> A = -10, B = 10. Find the weighted average with w = 0.6 for A and w = 0.4 for B.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(15, 'wrong1')">2</button>
+                        <button class="choice-btn" onclick="checkIndependent(15, 'correct')">-2</button>
+                        <button class="choice-btn" onclick="checkIndependent(15, 'wrong2')">0</button>
+                    </div>
+                    <span class="result-inline" id="ind15-result"></span>
+                </div>
+
+                <!-- Problem 16 -->
+                <div class="independent-problem" data-answer="15">
+                    <p><strong>16.</strong> Point P divides AB in ratio 2:1. A = 3, B = 21. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(16, 'wrong1')">9</button>
+                        <button class="choice-btn" onclick="checkIndependent(16, 'correct')">15</button>
+                        <button class="choice-btn" onclick="checkIndependent(16, 'wrong2')">12</button>
+                    </div>
+                    <span class="result-inline" id="ind16-result"></span>
+                </div>
+
+                <!-- Problem 17 -->
+                <div class="independent-problem" data-answer="6">
+                    <p><strong>17.</strong> A = 2, B = 14. P is 1/3 of the way from A to B. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(17, 'correct')">6</button>
+                        <button class="choice-btn" onclick="checkIndependent(17, 'wrong1')">4</button>
+                        <button class="choice-btn" onclick="checkIndependent(17, 'wrong2')">8</button>
+                    </div>
+                    <span class="result-inline" id="ind17-result"></span>
+                </div>
+
+                <!-- Problem 18 -->
+                <div class="independent-problem" data-answer="4:1">
+                    <p><strong>18.</strong> A = 5, B = 25, P = 21. What is the ratio AP:PB?</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(18, 'wrong1')">1:4</button>
+                        <button class="choice-btn" onclick="checkIndependent(18, 'correct')">4:1</button>
+                        <button class="choice-btn" onclick="checkIndependent(18, 'wrong2')">3:2</button>
+                    </div>
+                    <span class="result-inline" id="ind18-result"></span>
+                </div>
+
+                <!-- Problem 19 -->
+                <div class="independent-problem" data-answer="22.5">
+                    <p><strong>19.</strong> Three points: 10, 30, 40 with weights 0.5, 0.25, 0.25. Find the weighted average.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(19, 'correct')">22.5</button>
+                        <button class="choice-btn" onclick="checkIndependent(19, 'wrong1')">27.5</button>
+                        <button class="choice-btn" onclick="checkIndependent(19, 'wrong2')">26.67</button>
+                    </div>
+                    <span class="result-inline" id="ind19-result"></span>
+                </div>
+
+                <!-- Problem 20 -->
+                <div class="independent-problem" data-answer="-4">
+                    <p><strong>20.</strong> A = -8, B = 12. Point P partitions AB in ratio 1:4. Find P.</p>
+                    <div class="choices">
+                        <button class="choice-btn" onclick="checkIndependent(20, 'correct')">-4</button>
+                        <button class="choice-btn" onclick="checkIndependent(20, 'wrong1')">0</button>
+                        <button class="choice-btn" onclick="checkIndependent(20, 'wrong2')">4</button>
+                    </div>
+                    <span class="result-inline" id="ind20-result"></span>
                 </div>
             </div>
 
@@ -474,11 +584,11 @@
                     </div>
                     <div class="result-item">
                         <span>Independent Practice:</span>
-                        <span id="finalIndScore">0/10</span>
+                        <span id="finalIndScore">0/20</span>
                     </div>
                     <div class="result-item total">
                         <span>Overall Score:</span>
-                        <span id="overallScore">0/14</span>
+                        <span id="overallScore">0/24</span>
                     </div>
                 </div>
 

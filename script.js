@@ -254,6 +254,32 @@ function completeExercise(exerciseNum) {
     }
 }
 
+// Correct answers for all 20 questions
+const correctAnswers = {
+    1: '10',
+    2: '14',
+    3: '9',
+    4: '1:1',
+    5: 'Closer to A',
+    6: '0',
+    7: '12',
+    8: '3',
+    9: '3:1',
+    10: '21',
+    11: '7',
+    12: '8',
+    13: '2:3',
+    14: 'Closer to B',
+    15: '-2',
+    16: '15',
+    17: '6',
+    18: '4:1',
+    19: '22.5',
+    20: '-4'
+};
+
+const TOTAL_QUESTIONS = 20;
+
 // Independent practice
 function checkIndependent(questionNum, answer) {
     if (answeredIndependent.has(questionNum)) return;
@@ -266,20 +292,20 @@ function checkIndependent(questionNum, answer) {
 
     if (answer === 'correct') {
         independentScore++;
-        resultEl.textContent = '✓';
+        resultEl.textContent = '✓ Correct!';
         resultEl.className = 'result-inline correct';
         independentAnswers[questionNum] = { correct: true };
     } else {
-        resultEl.textContent = '✗';
+        resultEl.textContent = `✗ Correct answer: ${correctAnswers[questionNum]}`;
         resultEl.className = 'result-inline incorrect';
         independentAnswers[questionNum] = { correct: false };
     }
 
     document.getElementById('independentScore').textContent = independentScore;
 
-    if (answeredIndependent.size === 10) {
+    if (answeredIndependent.size === TOTAL_QUESTIONS) {
         document.getElementById('finalScore').style.display = 'block';
-        document.getElementById('finalScoreNumber').textContent = `${independentScore}/10`;
+        document.getElementById('finalScoreNumber').textContent = `${independentScore}/${TOTAL_QUESTIONS}`;
         document.getElementById('phase4Next').disabled = false;
         updateFinalResults();
     }
@@ -287,9 +313,9 @@ function checkIndependent(questionNum, answer) {
 
 // Update final results in Phase 5
 function updateFinalResults() {
-    document.getElementById('finalIndScore').textContent = `${independentScore}/10`;
+    document.getElementById('finalIndScore').textContent = `${independentScore}/${TOTAL_QUESTIONS}`;
     const overallScore = 4 + independentScore;
-    document.getElementById('overallScore').textContent = `${overallScore}/14`;
+    document.getElementById('overallScore').textContent = `${overallScore}/${4 + TOTAL_QUESTIONS}`;
 }
 
 // Print functions
@@ -300,28 +326,16 @@ function printWorksheet() {
 function printResults() {
     // Prepare print content
     let resultsHTML = '';
-    const correctAnswers = {
-        1: '10',
-        2: '14',
-        3: '9',
-        4: '1:1',
-        5: 'Closer to A',
-        6: '0',
-        7: '12',
-        8: '3',
-        9: '3:1',
-        10: '21'
-    };
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
         const answered = independentAnswers[i];
         const status = answered ? (answered.correct ? '✓ Correct' : '✗ Incorrect') : 'Not answered';
         resultsHTML += `<p>Question ${i}: ${status} (Answer: ${correctAnswers[i]})</p>`;
     }
 
     document.getElementById('printIndependentResults').innerHTML = resultsHTML;
-    document.getElementById('printFinalScore').textContent = `${independentScore}/10`;
-    document.getElementById('printPercentage').textContent = `${Math.round((independentScore/10) * 100)}%`;
+    document.getElementById('printFinalScore').textContent = `${independentScore}/${TOTAL_QUESTIONS}`;
+    document.getElementById('printPercentage').textContent = `${Math.round((independentScore/TOTAL_QUESTIONS) * 100)}%`;
 
     window.print();
 }
@@ -371,7 +385,7 @@ function restartLesson() {
     // Reset independent practice
     document.getElementById('independentScore').textContent = '0';
     document.querySelectorAll('.independent-problem .choice-btn').forEach(btn => btn.disabled = false);
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
         const resultEl = document.getElementById(`ind${i}-result`);
         if (resultEl) {
             resultEl.textContent = '';
